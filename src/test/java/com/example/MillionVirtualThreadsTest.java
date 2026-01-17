@@ -11,6 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @SpringBootTest
 class MillionVirtualThreadsTest {
 
@@ -67,12 +69,20 @@ class MillionVirtualThreadsTest {
 
         // Print results
         System.out.println("Virtual threads: " + NUMBER_OF_THREADS);
-        System.out.println("CPU cores: " + Runtime.getRuntime().availableProcessors());
+
+        int cpuCores = Runtime.getRuntime().availableProcessors();
+        System.out.println("CPU cores: " + cpuCores);
+
         System.out.println("Time taken: " + durationMs + "ms");
         System.out.println("### Thread Pools");
         forkJoinPoolsUsed.forEach(System.out::println);
         System.out.println("### Workers (platform threads) count : " + platformWorkerThreadsUsed.size());
         platformWorkerThreadsUsed.forEach(System.out::println);
+
+        assertTrue(
+                platformWorkerThreadsUsed.size() <= cpuCores,
+                "Platform worker threads exceeded CPU cores"
+        );
     }
 
     /**
@@ -122,11 +132,19 @@ class MillionVirtualThreadsTest {
 
         // Print results
         System.out.println("Platform threads: " + NUMBER_OF_THREADS);
-        System.out.println("CPU cores: " + Runtime.getRuntime().availableProcessors());
+
+        int cpuCores = Runtime.getRuntime().availableProcessors();
+        System.out.println("CPU cores: " + cpuCores);
+
         System.out.println("Time taken: " + durationMs + "ms");
         System.out.println("### Thread Pools");
         forkJoinPoolsUsed.forEach(System.out::println);
         System.out.println("### Platform worker threads count : " + platformWorkerThreadsUsed.size());
+
+        assertTrue(
+                platformWorkerThreadsUsed.size() > cpuCores,
+                "Expected platform threads to exceed CPU cores"
+        );
     }
 
     // Get pool name from thread info (e.g., ForkJoinPool-1)
