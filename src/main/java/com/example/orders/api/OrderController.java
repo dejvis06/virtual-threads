@@ -2,7 +2,7 @@ package com.example.orders.api;
 
 import com.example.orders.api.dto.CreateOrderRequest;
 import com.example.orders.api.dto.OrderResponse;
-import com.example.orders.OrderService;
+import com.example.orders.application.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

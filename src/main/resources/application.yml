@@ -4,6 +4,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/orders
     username: orders
     password: orders
+    tomcat.max-active: 2000
   jpa:
     hibernate:
       ddl-auto: update

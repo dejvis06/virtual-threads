@@ -1,9 +1,9 @@
-package com.example.orders;
+package com.example.orders.infrastructure;
 
 import com.example.orders.domain.Customer;
 import com.example.orders.domain.Product;
-import com.example.orders.persistence.CustomerRepository;
-import com.example.orders.persistence.ProductRepository;
+import com.example.orders.infrastructure.persistence.CustomerRepository;
+import com.example.orders.infrastructure.persistence.ProductRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;

@@ -9,13 +9,12 @@ import com.example.orders.api.dto.CreateOrderRequest;
 import com.example.orders.api.dto.OrderResponse;
 import com.example.orders.domain.Customer;
 import com.example.orders.domain.Product;
-import com.example.orders.persistence.CustomerRepository;
-import com.example.orders.persistence.ProductRepository;
+import com.example.orders.infrastructure.persistence.CustomerRepository;
+import com.example.orders.infrastructure.persistence.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.*;
 
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;

@@ -1,9 +1,11 @@
-package com.example.orders;
+package com.example.orders.application;
 
 import com.example.orders.api.dto.CreateOrderRequest;
 import com.example.orders.api.dto.OrderResponse;
 import com.example.orders.domain.*;
-import com.example.orders.persistence.*;
+import com.example.orders.infrastructure.persistence.CustomerRepository;
+import com.example.orders.infrastructure.persistence.OrderRepository;
+import com.example.orders.infrastructure.persistence.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
